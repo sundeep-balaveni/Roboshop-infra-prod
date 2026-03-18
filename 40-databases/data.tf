@@ -1,5 +1,5 @@
 data "aws_ssm_parameter" "database_sg_id" {
-     name  = "${var.project}-${var.env}-mongo-db"
+     name  = "${var.project}-${var.env}-mongo_db"
 }
 
 data "aws_ssm_parameter" "database_subnet_ids" {
