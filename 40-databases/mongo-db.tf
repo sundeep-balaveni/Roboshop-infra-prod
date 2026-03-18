@@ -31,7 +31,7 @@ resource "terraform_data" "bootstrap" {
   provisioner "remote-exec" {               //terraform will use this provisioner to run the bootstrap script on the newly created instance
 
     
-    inline = [ "chmod + x /tmp/bootstrap.sh" 
+    inline = [ "chmod +x /tmp/bootstrap.sh" 
      ,  "sudo sh /tmp/bootstrap.sh"]  
 
    
