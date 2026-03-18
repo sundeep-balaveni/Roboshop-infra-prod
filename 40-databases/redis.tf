@@ -10,10 +10,10 @@ resource "aws_instance" "redis" {
 
 
 
-resource "terraform_data" "bootstrap" {
+resource "terraform_data" "redis_bootstrap" {
   # triggers force re-run when instance changes
   triggers_replace = [
-    aws_instance.mongo-db.id
+    aws_instance.redis.id
   ]
 
    connection {
