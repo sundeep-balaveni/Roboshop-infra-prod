@@ -34,7 +34,7 @@ resource "terraform_data" "redis_bootstrap" {
 
     
     inline = [ "chmod +x /tmp/bootstrap.sh" 
-     ,  "sudo sh /tmp/redis.sh"]  
+     ,  "sudo sh /tmp/bootstrap.sh"]  
 
    
   }
