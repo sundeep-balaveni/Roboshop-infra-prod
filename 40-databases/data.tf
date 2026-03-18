@@ -3,5 +3,5 @@ data "aws_ssm_parameter" "database_sg_id" {
 }
 
 data "aws_ssm_parameter" "database_subnet_ids" {
-  name = "${var.project}-${var.env}-database-subnets"
+  name = "${var.project}-${var.env}-database-subnet"
 }
