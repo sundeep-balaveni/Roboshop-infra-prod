@@ -24,7 +24,7 @@ resource "null_resource" "bootstrap" {
 
     provisioner "file" {
 
-        source = "Roboshop-infra/40-databases/bootstrap.sh"
+        source = "C:/Users/your-username/Roboshop-infra/40-databases/bootstrap.sh"
         destination = "/tmp/bootstrap.sh"
     }
 
