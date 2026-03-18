@@ -1,7 +1,7 @@
 resource "aws_instance" "mongo-db" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [data.aws_ssm_parameter.database_sg_id.value]
+  vpc_security_group_ids = [data.aws_ssm_parameter.mongo_sg_id.value]
   subnet_id = split(",", data.aws_ssm_parameter.database_subnet_ids.value)[0]
   tags = { Name = var.instance_name }
 
