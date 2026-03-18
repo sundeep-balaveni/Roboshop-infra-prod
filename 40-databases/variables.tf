@@ -30,7 +30,7 @@ variable "domain_name" {
 
 
 variable "instance_name" {
-    type = string
+    type = list(string)
     default = ["mongo-db" , "redis" , "mysql"]
 }
 
