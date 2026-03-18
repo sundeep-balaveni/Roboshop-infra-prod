@@ -8,11 +8,11 @@ resource "aws_instance" "mongo-db" {
 }
 
 
-resource "null_resource" "bootstrap" {
+resource "terraform_data" "bootstrap" {
   # triggers force re-run when instance changes
-  triggers = {
-    instance_id = aws_instance.mongo-db.id
-  }
+  triggers_replace = [
+    aws_instance.mongo-db.id
+  ]
 
    connection {
       type        = "ssh"
