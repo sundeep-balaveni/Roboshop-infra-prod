@@ -31,7 +31,7 @@ variable "domain_name" {
 
 variable "instance_name" {
     type = list(string)
-    default = ["mongo-db" , "redis" , "mysql"]
+    default = ["mongo-db" , "redis","mysql"]
 }
 
 variable "project" {
