@@ -30,14 +30,8 @@ variable "domain_name" {
 
 
 variable "instance_name" {
-
     type = string
-
     default = "Mongo-db"
-  
-
-
-  
 }
 
 variable "project" {

@@ -1,7 +1,7 @@
-resource "aws_instance" "mongo-db" {
+resource "aws_instance" "redis" {
   ami           = var.ami_id
   instance_type = var.instance_type
-  vpc_security_group_ids = [data.aws_ssm_parameter.database_sg_id.value]
+  vpc_security_group_ids = [data.aws_ssm_parameter.redis_sg_id.value]
   subnet_id = split(",", data.aws_ssm_parameter.database_subnet_ids.value)[0]
   tags = { Name = var.instance_name }
 
@@ -20,13 +20,13 @@ resource "terraform_data" "bootstrap" {
       type        = "ssh"
       user        = "ec2-user"
       password = "DevOps321"
-      host        = aws_instance.mongo-db.private_ip
+      host        = aws_instance.redis.private_ip
     }
 
 
     provisioner "file" {
 
-        source = "bootstrap.sh"
+        source = "redis.sh"
         destination = "/tmp/bootstrap.sh"
     }
 
@@ -34,7 +34,7 @@ resource "terraform_data" "bootstrap" {
 
     
     inline = [ "chmod +x /tmp/bootstrap.sh" 
-     ,  "sudo sh /tmp/bootstrap.sh"]  
+     ,  "sudo sh /tmp/redis.sh"]  
 
    
   }
