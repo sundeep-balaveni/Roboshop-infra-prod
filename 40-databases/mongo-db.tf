@@ -17,7 +17,7 @@ resource "null_resource" "bootstrap" {
    connection {
       type        = "ssh"
       user        = "ec2-user"
-      private_key = file("~/.ssh/my_key.pem")
+      private_key = "DevOps321"
       host        = aws_instance.mongo-db.private_ip
     }
 
