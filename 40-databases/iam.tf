@@ -29,8 +29,7 @@ resource "aws_iam_policy" "mysql" {
     policy = file("${path.module}/mysql_policy.json")
 }
 
-resource "aws_iam_role_policy_attachment" "mysql-attachment" 
-{
+resource "aws_iam_role_policy_attachment" "mysql-attachment" { 
   role       = aws_iam_role.mysql.name
   policy_arn = aws_iam_policy.mysql.arn
 }
