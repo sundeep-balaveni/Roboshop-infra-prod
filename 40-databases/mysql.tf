@@ -4,6 +4,7 @@ resource "aws_instance" "mysql" {
   vpc_security_group_ids = [data.aws_ssm_parameter.mysql_sg_id.value]
   subnet_id = split(",", data.aws_ssm_parameter.database_subnet_ids.value)[0]
   tags = { Name = var.instance_name[2] }
+  iam_instance_profile = aws_iam_instance_profile.mysql.name
 
 }
 

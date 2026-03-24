@@ -22,3 +22,21 @@ resource "aws_iam_role" "mysql" {
   }
 }
 
+resource "aws_iam_policy" "mysql" {
+
+    name = "RoboshopMySQLPolicy"
+    description = policy for MySQL EC2 instance
+    policy = file("${path.module}/mysql_policy.json")
+}
+
+resource "aws_iam_role_policy_attachment" "mysql-attachment" 
+{
+  role       = aws_iam_role.mysql.name
+  policy_arn = aws_iam_policy.mysql.arn
+}
+
+resource "aws_iam_instance_profile" "mysql" {
+  name = "Roboshop-MySQL-Instance-Profile"
+  role = aws_iam_role.mysql.name
+
+}
