@@ -25,7 +25,7 @@ resource "aws_iam_role" "mysql" {
 resource "aws_iam_policy" "mysql" {
 
     name = "RoboshopMySQLPolicy"
-    description = policy for MySQL EC2 instance
+    description = "policy for MySQL EC2 instance"
     policy = file("${path.module}/mysql_policy.json")
 }
 
