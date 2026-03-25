@@ -13,4 +13,7 @@ git pull
 
 cd Ansible-role-roboshop-tf
 
-ansible-playbook -i inventory.ini catalogue.yml  -vvv
+#ds
+
+
+ansible-playbook -i inventory.ini catalouge.yml  -vvv
