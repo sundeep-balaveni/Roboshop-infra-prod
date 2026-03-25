@@ -12,6 +12,6 @@ variable "env" {
 
 variable "sg_names" {
     type = list(string)
-    default = ["mongo_db","redis","mysql","bastion_host"]  
+    default = ["mongo_db","redis","mysql","bastion_host","Backend_alb" ,"Frontend_alb" ,"catalogue"]  
 }
 

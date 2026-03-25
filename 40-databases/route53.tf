@@ -24,3 +24,13 @@ resource "aws_route53_record" "mysql" {
   records = [aws_instance.mysql.private_ip]
   allow_overwrite = true
 }
+
+
+# resource "aws_route53_record" "backend_alb" {
+#   zone_id = "Z09029021ATNZMJUN4M6"
+#   name    = "*.backend_alb-${var.env}"
+#   type    = "A"
+#   ttl     = "1"
+#   records = [aws_instance.mysql.private_ip]
+#   allow_overwrite = true
+# }
