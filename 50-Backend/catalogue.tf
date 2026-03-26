@@ -50,6 +50,7 @@ resource "aws_instance" "catalogue" {
 
 resource "terraform_data" "Catalogue" {
     triggers_replace = aws_instance.catalogue.id
+    depends_on = [ aws_instance.catalogue ]
 
 
     connection {
