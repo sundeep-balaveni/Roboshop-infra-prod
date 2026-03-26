@@ -16,4 +16,4 @@ cd Ansible-role-roboshop-tf
 #ds
 
 
-ansible-playbook -i inventory.ini catalouge.yml  -vvv
+ansible-playbook -i inventory.ini catalouge.yml  -vvv  

@@ -73,3 +73,22 @@ resource "aws_security_group_rule" "catalogue_backend_alb" {  //accepting ssh fr
   source_security_group_id = local.backend_alb_sg_id
   security_group_id = local.catalogue_sg_id
 }
+
+resource "aws_security_group_rule" "catalogue_mongo_db" {  //accepting ssh from bastion
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  source_security_group_id = local.mongo_db_sg_id
+  security_group_id = local.catalogue_sg_id
+}
+
+
+
+resource "aws_security_group_rule" "backend_alb" {  //accepting ssh from bastion
+  type              = "ingress"
+  from_port         = 80
+  to_port           = 80
+  protocol          = "tcp"
+  security_group_id = local.backend_alb_sg_id
+}
