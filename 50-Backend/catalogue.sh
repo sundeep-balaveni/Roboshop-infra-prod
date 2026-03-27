@@ -11,7 +11,8 @@ git clone https://github.com/daws-88s/ansible-roboshop-roles-tf.git
 
 git pull 
 
-cd Ansible-role-roboshop-tf
+cd ansible-roboshop-roles-tf
+
 
 #ds
 
