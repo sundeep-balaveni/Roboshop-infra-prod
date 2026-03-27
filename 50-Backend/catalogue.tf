@@ -79,7 +79,7 @@ resource "terraform_data" "Catalogue" {
 
 }
 
-action "aws_ec2_instance_state" "Catalogue" {
+action "aws_instance" "Catalogue" {
   config {
     instance_id = aws_instance.catalogue.id
     state       = "stopped"
