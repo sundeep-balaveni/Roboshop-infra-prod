@@ -5,7 +5,7 @@ resource "aws_instance" "catalogue" {
   instance_type = var.instance_type
   vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
   subnet_id = split(",", data.aws_ssm_parameter.private_subnet_id.value)[0]
-  tags = { Name = var.instance_name }
+  tags = { Name = var.instance_name} 
 #   iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name
 
   #EBS volume configuration
@@ -77,7 +77,30 @@ resource "terraform_data" "Catalogue" {
   }
 
 
-    
-
-  
 }
+
+action "aws_ec2_instance_state" "Catalogue" {
+  config {
+    instance_id = aws_instance.catalogue.id
+    state       = "stopped"
+    depends_on = [aws_instance.catalogue]
+  }
+}
+
+resource "aws_ami_from_instance" "Catalogue" {
+  name               = var.instance_name
+  source_instance_id = aws_instance.catalogue.id
+  depends_on = [action.aws_ec2_instance_state.Catalogue]
+
+  tags = {
+    name = var.instance_name
+  }
+}
+
+
+
+
+
+
+
+
