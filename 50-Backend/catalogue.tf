@@ -90,7 +90,7 @@ action "aws_ec2_instance_state" "Catalogue" {
 resource "aws_ami_from_instance" "Catalogue" {
   name               = var.instance_name
   source_instance_id = aws_instance.catalogue.id
-  depends_on = [action.aws_ec2_instance_state.Catalogue]
+  depends_on = [aws_ec2_instance_state.Catalogue]
 
   tags = {
     name = var.instance_name
