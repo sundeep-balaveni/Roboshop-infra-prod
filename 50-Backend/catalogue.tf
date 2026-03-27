@@ -79,12 +79,12 @@ resource "terraform_data" "Catalogue" {
 
 }
 
-action "aws_instance" "Catalogue" {
-  config {
+resource "aws_ec2_instance_state" "Catalogue" {
+  
     instance_id = aws_instance.catalogue.id
     state       = "stopped"
-    depends_on = [aws_instance.catalogue]
-  }
+    depends_on = [terraform_data.Catalogue]
+  
 }
 
 resource "aws_ami_from_instance" "Catalogue" {
