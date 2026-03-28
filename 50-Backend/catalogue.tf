@@ -95,7 +95,22 @@ resource "aws_ami_from_instance" "Catalogue" {
   tags = {
     name = var.instance_name
   }
+
+
+  
+
+
+
+
+
+
+
+
 }
+
+
+
+
 
 
 
