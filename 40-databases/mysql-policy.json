@@ -8,7 +8,7 @@
                 "ssm:GetParameters",
                 "ssm:GetParameter"
             ],
-            "Resource": "arn:aws:ssm:us-east-1:312605938075:parameter/Roboshop-MySQL-password"
+            "Resource": "arn:aws:ssm:us-east-1:825555019132:parameter/Roboshop-MySQL-password"
         },
         {
             "Sid": "VisualEditor1",
