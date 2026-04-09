@@ -1,5 +1,5 @@
 resource "aws_route53_record" "mongodb" {
-  zone_id = "Z09029021ATNZMJUN4M6"
+  zone_id = "Z0521440VTYXZ3IR185D"
   name    = "mongodb-${var.env}"
   type    = "A"
   ttl     = "1"
@@ -8,7 +8,7 @@ resource "aws_route53_record" "mongodb" {
 }
 
 resource "aws_route53_record" "redis" {
-  zone_id = "Z09029021ATNZMJUN4M6"
+  zone_id = "Z0521440VTYXZ3IR185D"
   name    = "redis-${var.env}"
   type    = "A"
   ttl     = "1"
@@ -17,7 +17,7 @@ resource "aws_route53_record" "redis" {
 }
 
 resource "aws_route53_record" "mysql" {
-  zone_id = "Z09029021ATNZMJUN4M6"
+  zone_id = "Z0521440VTYXZ3IR185D"
   name    = "mysql-${var.env}"
   type    = "A"
   ttl     = "1"
@@ -26,11 +26,11 @@ resource "aws_route53_record" "mysql" {
 }
 
 
-# resource "aws_route53_record" "backend_alb" {
-#   zone_id = "Z09029021ATNZMJUN4M6"
-#   name    = "*.backend_alb-${var.env}"
-#   type    = "A"
-#   ttl     = "1"
-#   records = [aws_instance.mysql.private_ip]
-#   allow_overwrite = true
-# }
+resource "aws_route53_record" "backend_alb" {
+  zone_id = "Z0521440VTYXZ3IR185D"
+  name    = "*.backend_alb-${var.env}"
+  type    = "A"
+  ttl     = "1"
+  records = [aws_instance.mysql.private_ip]
+  allow_overwrite = true
+}
