@@ -8,6 +8,17 @@ resource "aws_instance" "mysql" {
 
 }
 
+resource "aws_iam_policy" "policy" {
+  name        = "mysql-policy"
+  description = "A test policy"
+  policy      = file("./mysql-policy.json")
+}
+
+resource "aws_iam_policy_attachment" "mysql" {
+  name       = "test-attachment"
+  policy_arn = aws_iam_policy.policy.arn
+}
+
 
 
 
