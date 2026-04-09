@@ -8,15 +8,40 @@ resource "aws_instance" "mysql" {
 
 }
 
+
+resource "aws_iam_role" "bastion" {
+  name = "RoboshopProdBastion"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = {
+    tag-key = "RoboshopProdBastion"
+  }
+}
+
 resource "aws_iam_policy" "policy" {
   name        = "mysql-policy"
   description = "A test policy"
   policy      = file("./mysql-policy.json")
 }
 
-resource "aws_iam_policy_attachment" "mysql" {
-  name       = "test-attachment"
-  policy_arn = aws_iam_policy.policy.arn
+resource "aws_iam_instance_profile" "mysql_profile" {
+  name = "mysql-profile"
+  role = aws_iam_role.mysql.name
 }
 
 
