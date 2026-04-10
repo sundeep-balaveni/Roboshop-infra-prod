@@ -92,13 +92,14 @@ resource "aws_autoscaling_group" "cataloue_asg" {
   min_size           = 1
   force_delete = false
   health_check_grace_period = 120
-
+ 
   launch_template {
     id      = aws_launch_template.catalogue_launch_template.id
     version = "$Latest"
   }
 
   vpc_zone_identifier = split(",", data.aws_ssm_parameter.catalogue_subnet_id.value)
+  target_group_arns = [aws_lb_target_group.Catalogue-target-group.arn]
 }
 
 
