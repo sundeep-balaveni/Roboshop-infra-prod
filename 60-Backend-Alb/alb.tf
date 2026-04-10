@@ -103,7 +103,7 @@ resource "aws_autoscaling_group" "cataloue_asg" {
 
 
 resource "aws_autoscaling_policy" "catalogue" {
-  autoscaling_group_name = aws_autoscaling_group.catalogue.name
+  autoscaling_group_name = aws_autoscaling_group.cataloue_asg.name
   name = "catalogue-launch-template"
   policy_type            = "TargetTrackingScaling"
   estimated_instance_warmup = 120
@@ -123,7 +123,7 @@ resource "aws_lb_listener_rule" "catalogue" {
 
   action {
     type             = "forward"
-    target_group_arn = aws_lb_target_group.catalogue.arn
+    target_group_arn = aws_lb_target_group.Catalogue-target-group.arn
   }
 
   condition {
