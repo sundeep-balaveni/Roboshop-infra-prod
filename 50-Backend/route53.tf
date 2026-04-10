@@ -1,5 +1,5 @@
 resource "aws_route53_record" "mongodb" {
-  zone_id = "Z09029021ATNZMJUN4M6"
+  zone_id = "Z0521440VTYXZ3IR185Dadd ."
   name    = "catalogue-${var.env}"
   type    = "A"
   ttl     = "1"
