@@ -34,7 +34,7 @@ resource "aws_lb_listener" "http" {
 
  resource "aws_lb_target_group_attachment" "Catalogue-target-group-attachment" {
   target_group_arn = aws_lb_target_group.Catalogue-target-group.arn
-  target_id        = aws_instance.catalogue.id
+  target_id        = data.aws_ssm_parameter.catalogue_vpc_id.value
   port             = 8080
 }
 
