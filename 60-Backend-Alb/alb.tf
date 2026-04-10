@@ -40,7 +40,7 @@ resource "aws_lb_listener" "http" {
 
 
 resource "aws_route53_record" "backend_alb" {
-  zone_id = "Z09029021ATNZMJUN4M6"
+  zone_id = "Z0521440VTYXZ3IR185D"
   name    = "*.backend-alb-${var.env}"
   type    = "A"
 
