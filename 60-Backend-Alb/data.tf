@@ -15,6 +15,10 @@ data "aws_ssm_parameter" "vpc_id" {
      name  = "${var.project}-${var.env}"
 }
 
+data "aws_ssm_parameter" "private_subnet_id" {
+    name  = "${var.project}-${var.env}-private_subnet"
+}
+
 
 data "aws_ssm_parameter" "catalogue_vpc_id" {
 name  = "${var.project}-${var.env}-catalogue_vpc_id"
