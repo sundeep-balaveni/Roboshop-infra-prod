@@ -65,15 +65,40 @@ resource "aws_route53_record" "backend_alb" {
  
 }
 
+resource "aws_launch_template" "catalogue_launch_template" {
+
+  name = "catalogue-launch-template"
+   image_id = data.aws_ssm_parameter.catalogue_ami_id.value
+   instance_initiated_shutdown_behavior = "terminate"
+    instance_type = "t3.micro"
+
+  monitoring {
+    enabled = true
+  }
+
+   network_interfaces {
+    associate_public_ip_address = false
+  }
+
+    placement {
+    availability_zone = "us-east-1a"
+  }
+
+  vpc_security_group_ids = [data.aws_ssm_parameter.catalogue_sg_id.value]
+}
+
+
 resource "aws_autoscaling_group" "cataloue_asg" {
   name               = "catalogue-asg"
   availability_zones = ["us-east-1"]
   desired_capacity   = 1
   max_size           = 2
   min_size           = 1
+  force_delete = false
+  health_check_grace_period = 120
 
   launch_template {
-    id      = data.aws_ssm_parameter.catalogue_ami_id
+    id      = aws_launch_template.catalogue_launch_template.id
     version = "$Latest"
   }
 }
