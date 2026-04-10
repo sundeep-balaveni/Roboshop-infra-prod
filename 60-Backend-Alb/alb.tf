@@ -98,7 +98,7 @@ resource "aws_autoscaling_group" "cataloue_asg" {
     version = "$Latest"
   }
 
-  vpc_zone_identifier = split(",", data.aws_ssm_parameter.catalogue_subnet_id.value)[0]
+  vpc_zone_identifier = split(",", data.aws_ssm_parameter.catalogue_subnet_id.value)
 }
 
 
