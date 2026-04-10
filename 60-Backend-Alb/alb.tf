@@ -86,7 +86,7 @@ resource "aws_launch_template" "catalogue_launch_template" {
 
 resource "aws_autoscaling_group" "cataloue_asg" {
   name               = "catalogue-asg"
-  availability_zones = ["us-east-1"]
+  
   desired_capacity   = 1
   max_size           = 2
   min_size           = 1
