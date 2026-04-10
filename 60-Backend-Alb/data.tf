@@ -16,3 +16,7 @@ data "aws_ssm_parameter" "catalogue_vpc_id" {
 name  = "${var.project}-${var.env}-catalogue_vpc_id"
 }
 
+data "aws_ssm_parameter" "catalogue_ami_id" {
+name  = "${var.project}-${var.env}-catalogue_ami_id"
+}
+

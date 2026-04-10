@@ -5,6 +5,7 @@ resource "aws_lb" "main" {
   security_groups    = [data.aws_ssm_parameter.backend_alb_sg_id.value]
   subnets = split(",", data.aws_ssm_parameter.backend_alb_subnet_id.value)
 
+
   enable_deletion_protection = false
 }
 
@@ -14,6 +15,17 @@ resource "aws_lb_target_group" "Catalogue-target-group" {
   port     = 8080
   protocol = "HTTP"
   vpc_id   = data.aws_ssm_parameter.vpc_id.value
+
+    health_check {
+    healthy_threshold   = 2
+    unhealthy_threshold = 2
+    timeout             = 3
+    interval            = 30
+    path                = "/health"
+    protocol            = "HTTP"
+  }
+
+  
 
 }
 
@@ -51,4 +63,17 @@ resource "aws_route53_record" "backend_alb" {
     evaluate_target_health = true
   }
  
+}
+
+resource "aws_autoscaling_group" "cataloue_asg" {
+  name               = "catalogue-asg"
+  availability_zones = ["us-east-1"]
+  desired_capacity   = 1
+  max_size           = 2
+  min_size           = 1
+
+  launch_template {
+    id      = data.aws_ssm_parameter.catalogue_ami_id
+    version = "$Latest"
+  }
 }
