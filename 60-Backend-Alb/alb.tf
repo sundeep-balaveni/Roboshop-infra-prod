@@ -72,7 +72,7 @@ resource "aws_launch_template" "catalogue_launch_template" {
    instance_initiated_shutdown_behavior = "terminate"
     instance_type = "t3.micro"
 
-  monitoring {
+  monitoring {  
     enabled = true
   }
 
