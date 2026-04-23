@@ -1,5 +1,5 @@
 module "vpc" {
-  source = "../../VPC"
+  source = "../VPC"
   project = "roboshop"
   env = var.env
 
