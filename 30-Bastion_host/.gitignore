@@ -1,0 +1,82 @@
+<<<<<<< HEAD
+# -----------------------
+# OS / Editor files
+# -----------------------
+# Windows thumbnail/cache files
+Thumbs.db
+Desktop.ini
+
+# macOS
+.DS_Store
+
+# VS Code
+.vscode/
+
+# -----------------------
+# Terraform files to ignore
+# -----------------------
+# Local .terraform directories
+**/.terraform/
+
+# Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Terraform plan outputs
+*.tfplan
+
+# Lock files
+*.terraform.lock.hcl
+
+# Crash logs
+crash.log
+
+# Override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# CLI history
+.terraformrc
+terraform.rc
+
+# -----------------------
+# Shell / script backups
+# -----------------------
+*.bak
+*.swp
+*~
+
+# -----------------------
+# Optional: logs or temporary files
+# -----------------------
+*.log
+
+# Ignore Terraform local directories and binaries
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.terraform.lock.hcl
+*.tfplan
+
+# Ignore Terraform local directories and binaries
+**/.terraform/
+*.tfstate
+*.tfstate.backup
+*.terraform.lock.hcl
+*.tfplan
+
+# Ignore OS and editor files
+Thumbs.db
+Desktop.ini
+.DS_Store
+.vscode/
+=======
+# Ignore Terraform state
+*.tfstate
+*.tfstate.backup
+*.terraform/
+*.terraform.lock.hcl
+*.tfplan
+>>>>>>> 92d0687 (Initial Bastion host commit without state or binaries)

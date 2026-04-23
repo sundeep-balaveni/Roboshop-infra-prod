@@ -26,11 +26,3 @@ resource "aws_route53_record" "mysql" {
 }
 
 
-resource "aws_route53_record" "backend_alb" {
-  zone_id = "Z0521440VTYXZ3IR185D"
-  name    = "*.backend_alb-${var.env}"
-  type    = "A"
-  ttl     = "1"
-  records = [aws_instance.mysql.private_ip]
-  allow_overwrite = true
-}

@@ -16,8 +16,8 @@ provider "aws" {
 
 terraform {
   backend "s3" {
-    bucket = "terraform-ytgkuygyuyyy"
-    key    = "Roboshop-infra-vpc-module"
+    bucket = "terraform-state-store-8hkjdfhebyuhui"
+    key    = "Bastion_host"
     region = "us-east-1"
     encrypt = true
     use_lockfile = true

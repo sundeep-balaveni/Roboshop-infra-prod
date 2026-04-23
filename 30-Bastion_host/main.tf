@@ -1,0 +1,48 @@
+
+
+resource "aws_instance" "T-1" {
+  ami           = var.ami_id
+  instance_type = var.instance_type
+  vpc_security_group_ids = [data.aws_ssm_parameter.bastion_sg_id.value]
+  subnet_id = split(",", data.aws_ssm_parameter.public_subnet_id.value)[0]
+  tags = { Name = var.instance_name }
+  iam_instance_profile        = aws_iam_instance_profile.bastion_profile.name
+}
+
+
+resource "aws_iam_role" "bastion" {
+  name = "RoboshopProdBastion"
+
+  # Terraform's "jsonencode" function converts a
+  # Terraform expression result to valid JSON syntax.
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  tags = {
+    tag-key = "RoboshopProdBastion"
+  }
+}
+
+
+resource "aws_iam_role_policy_attachment" "bastion_ec2_full_access" {
+  role       = aws_iam_role.bastion.name
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+}
+
+resource "aws_iam_instance_profile" "bastion_profile" {
+  name = "bastion-profile"
+  role = aws_iam_role.bastion.name
+}
+
+//we are adding IAM becuase it should create instances  
